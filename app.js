@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http=require('http');
+var util=require('util');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -42,5 +44,18 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//receive ajax 
+http.createServer(function(req,res){
+  console.log('Request received.');
+
+  res.writeHead(200,{'Content-Type':'text/plain','charset':'utf-8','Access-Control-Allow-Methods':'POST,GET'});
+  req.on('data',function(chunk){
+    console.log('Got Data');
+  });
+  //res.end('callback(\'{\"msg\": \"我要一个女朋友\"}\')');
+  res.end(callback(data));
+
+}).listen(3000,'127.0.0.1');
 
 module.exports = app;
