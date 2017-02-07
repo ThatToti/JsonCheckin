@@ -12,7 +12,7 @@ $(document).ready(function(){
         
         $.ajax({
         data:data,
-        type:'POST',
+        type:'GET',
         url:'http://127.0.0.1:3000/',
         dataType:'jsonp',
         async:true,
@@ -21,8 +21,8 @@ $(document).ready(function(){
             console.log(data);
         },*/
         success:function(data){
-            //var obj=Json.parse(data);
-            $('#showContent').html(data);
+            var obj=JSON.stringify(data);
+            $('#showContent').html(obj);
             console.log('success');
         },
         error:function(jqXHR,textStatus,errorThrown){

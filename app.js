@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http=require('http');
 var util=require('util');
+var urlLib=require('url');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -44,18 +45,47 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+/*
 //receive ajax 
 http.createServer(function(req,res){
+  var str='{"id":1}';
+
   console.log('Request received.');
 
   res.writeHead(200,{'Content-Type':'text/plain','charset':'utf-8','Access-Control-Allow-Methods':'POST,GET'});
   req.on('data',function(chunk){
+    str+=chunk;
     console.log('Got Data');
   });
-  //res.end('callback(\'{\"msg\": \"我要一个女朋友\"}\')');
-  res.end(callback(data));
 
+  //res.end('callback(\'{\"msg\": \"我要一个女朋友\"}\')');
+  res.write(str);
+  res.end();
+
+}).listen(3000,'127.0.0.1');
+*/
+
+
+//test
+http.createServer(function(req,res){
+  var data='';
+  console.log('webserver is ok!');
+
+  req.on('data',function(chunk){
+    data+=chunk;
+    console.log('got data');
+  });
+
+  res.writeHead(200,{
+    'Content-Type' : 'text/plain',
+    'charset':'utf-8'
+  });
+
+  //var parms=urlLib.parse(req.url,true);
+  var str='callback'+'('+JSON.stringify(data)+')';
+  //res.write(str);
+  res.end(str);
+  console.log('send back');
 }).listen(3000,'127.0.0.1');
 
 module.exports = app;

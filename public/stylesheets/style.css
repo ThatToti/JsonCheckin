@@ -5,4 +5,69 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+/*页面的大体结构*/
+
+#container{
+  position: relative;
+  margin:auto;
+  width: 500px;
+  height: 500px;
+  background-color: #f10180;
+  border-radius: 43px 200px 400px 200px;
+  box-shadow: 10px 11px 38px 9px #ab8cab 0.75 outline;
+}
+
+.top{
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.middle{
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  width: 342px;
+  height: 242px;
+  margin-top: 50px;
+}
+
+.bottom{
+  position: absolute;
+  left: 185px;
+  top: 330px;
+  background-color:white;
+  padding: 2px;
+  width: 100px;
+  text-align: center;
+  border-radius: 10px;
+}
+/*页面的大体结构*/
+
+/*清楚浮动类*/
+.clearfix:before,.clearfix:after{
+  content:"";
+  display: table;
+}
+.clearfix:after{
+  clear:both;
+}
+.clearfix{
+  *zoom:1;
+}
+/*清楚浮动类*/
+
+#jsonInput{
+  width: 300px;
+  height: 200px;
+  border: 1px solid #666;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2) outline;
+  padding: 20px;
+  border-radius: 10px;
+  resize: none;
 }
