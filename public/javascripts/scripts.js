@@ -7,16 +7,20 @@ $(document).ready(function(){
     //console.log(params);
 
     btnSb.click(function(){
+        var repo=$('repo');
+        var name=$('name');
         var input=$('#jsonInput');
-        var data=input.val();
+
+        var data={
+            "repo":repo.val(),
+            "name":name.val(),
+            "response":input.val()
+        };
         
         $.ajax({
         data:data,
-        type:'GET',
-        url:'http://127.0.0.1:3000/',
-        dataType:'jsonp',
-        async:true,
-        jsonpCallback:'callback',
+        type:'post',
+        url:'http://192.168.149.161:8080/addApi',
         /*beforeSend:function(){
             console.log(data);
         },*/
@@ -25,9 +29,6 @@ $(document).ready(function(){
             $('#showContent').html(obj);
             console.log('success');
         },
-        error:function(jqXHR,textStatus,errorThrown){
-            console.log('error'+textStatus+" "+errorThrown);
-        }
     });
     });
 });
