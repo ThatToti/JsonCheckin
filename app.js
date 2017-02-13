@@ -55,7 +55,7 @@ http.createServer(function(req,res){
   res.writeHead(200,{'Content-Type':'text/plain','charset':'utf-8','Access-Control-Allow-Methods':'POST,GET'});
   req.on('data',function(chunk){
     str+=chunk;
-    console.log('Got Data');
+    console.log('Got data');
   });
 
   //res.end('callback(\'{\"msg\": \"我要一个女朋友\"}\')');
